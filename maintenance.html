@@ -1,64 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maintenance Notice</title>
-<style>
-    body {
-        margin: 0;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #f4f6f9;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        color: #333;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Notice | Offline</title>
+    <style>
+        :root {
+            --primary-color: #2563eb; /* A clean, professional blue */
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
 
-    .card {
-        background: #ffffff;
-        padding: 40px 50px;
-        max-width: 520px;
-        border-radius: 10px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        text-align: center;
-    }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-gradient);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-dark);
+            padding: 20px;
+        }
 
-    h1 {
-        margin-top: 0;
-        font-size: 24px;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-    }
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 3rem 2rem;
+            width: 100%;
+            max-width: 480px;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
 
-    p {
-        line-height: 1.6;
-        margin: 15px 0;
-        font-size: 15px;
-    }
+        /* Subtle icon styling */
+        .status-icon {
+            width: 60px;
+            height: 60px;
+            background: #eff6ff;
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
 
-    .contact {
-        margin-top: 25px;
-        font-weight: 500;
-    }
-</style>
+        h1 {
+            margin: 0 0 1rem;
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            line-height: 1.7;
+            margin: 0 0 1.25rem;
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        .campus-badge {
+            display: inline-block;
+            background: #f1f5f9;
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-top: 0.5rem;
+        }
+
+        .contact-box {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .contact-name {
+            display: block;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-top: 0.25rem;
+        }
+
+        /* Mobile specific adjustments */
+        @media (max-width: 480px) {
+            .card {
+                padding: 2.5rem 1.5rem;
+                border-radius: 20px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            p {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
 <div class="card">
+    <div class="status-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+    </div>
+
     <h1>Maintenance Notice</h1>
+    
     <p>
-        The server is currently offline and unreachable via the internet.
-        This may be due to the Registrar system being powered down for maintenance
-        or temporarily disconnected from the internet.
+        The server is currently offline for maintenance. 
+        The Registrar system may be temporarily disconnected from the internet.
     </p>
-    <p>
-        Users may try accessing the site through the campus network.
-    </p>
-    <p class="contact">
-        For more information, please contact Sir Dodz.
-    </p>
+
+    <div class="campus-badge">
+        Accessible via Campus Network 🌐
+    </div>
+
+    <div class="contact-box">
+        <p style="margin-bottom: 0; font-size: 0.9rem;">Need urgent assistance?</p>
+        <span class="contact-name">Contact Sir Dodz</span>
+    </div>
 </div>
 
 </body>

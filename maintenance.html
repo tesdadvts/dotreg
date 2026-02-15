@@ -122,6 +122,33 @@
             font-size: 0.8rem;
             font-weight: 600;
         }
+
+        .try-again-btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    padding: 12px 32px;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+.try-again-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(239, 68, 68, 0.3);
+    color: white; /* Ensures text stays white in dark mode */
+}
+
+/* Ensure the button text color is correct in Dark Mode */
+[data-theme="dark"] .try-again-btn {
+    color: #0f172a; /* Dark background needs dark text for contrast if button is light, 
+                       but since button is Red/Primary, white usually stays best. 
+                       Keeping it white for visibility. */
+    color: white;
+}
     </style>
 </head>
 <body>
@@ -147,6 +174,7 @@
 <a href="https://tesdadvts.org" class="try-again-btn">
         Try Again
     </a>
+    <br>
 <div class="campus-info">
     🌐 <strong>Note:</strong> DVTS.REG may be accessible when connected to the <strong>Campus Network</strong>. Connect to the school Wi-Fi and try this link: 
     <a href="https://dvts.reg" style="color: var(--primary-color); font-weight: 700; text-decoration: underline;">https://dvts.reg</a>

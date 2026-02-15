@@ -6,10 +6,29 @@
     <title>Maintenance Notice | Offline</title>
     <style>
         :root {
-            --primary-color: #2563eb; /* A clean, professional blue */
-            --text-dark: #1e293b;
-            --text-light: #64748b;
-            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            /* Light Mode Colors */
+            --primary-color: #2563eb;
+            --bg-body: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --badge-bg: #f1f5f9;
+            --border-color: #f1f5f9;
+            --btn-bg: #1e293b;
+            --btn-text: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Mode Colors */
+            --primary-color: #60a5fa;
+            --bg-body: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --card-bg: rgba(30, 41, 59, 0.95);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --badge-bg: #334155;
+            --border-color: #334155;
+            --btn-bg: #f1f5f9;
+            --btn-text: #0f172a;
         }
 
         body {
@@ -18,30 +37,30 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--bg-gradient);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: var(--text-dark);
+            background: var(--bg-body);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text-main);
             padding: 20px;
+            transition: background 0.3s ease;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--card-bg);
             backdrop-filter: blur(10px);
             padding: 3rem 2rem;
             width: 100%;
             max-width: 480px;
             border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, background 0.3s ease;
         }
 
-        /* Subtle icon styling */
         .status-icon {
             width: 60px;
             height: 60px;
-            background: #eff6ff;
+            background: var(--badge-bg);
             color: var(--primary-color);
             border-radius: 50%;
             display: flex;
@@ -51,34 +70,38 @@
         }
 
         h1 {
-            margin: 0 0 1rem;
+            margin: 0 0 0.5rem;
             font-size: 1.75rem;
             font-weight: 700;
-            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
         }
 
         p {
-            line-height: 1.7;
-            margin: 0 0 1.25rem;
+            line-height: 1.6;
+            margin: 0 0 1.5rem;
             font-size: 1rem;
-            color: var(--text-light);
+            color: var(--text-muted);
         }
 
         .campus-badge {
             display: inline-block;
-            background: #f1f5f9;
-            padding: 8px 16px;
+            background: var(--badge-bg);
+            padding: 10px 16px;
             border-radius: 12px;
             font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-dark);
-            margin-top: 0.5rem;
+            border-left: 4px solid var(--primary-color);
+            text-align: left;
+            margin-bottom: 2rem;
         }
 
         .contact-box {
-            margin-top: 2rem;
             padding-top: 1.5rem;
-            border-top: 1px solid #f1f5f9;
+            border-top: 1px solid var(--border-color);
         }
 
         .contact-name {
@@ -88,18 +111,27 @@
             margin-top: 0.25rem;
         }
 
-        /* Mobile specific adjustments */
+        /* Toggle Button */
+        .theme-toggle {
+            margin-top: 2rem;
+            background: var(--btn-bg);
+            color: var(--btn-text);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: opacity 0.2s;
+        }
+
+        .theme-toggle:hover {
+            opacity: 0.9;
+        }
+
         @media (max-width: 480px) {
-            .card {
-                padding: 2.5rem 1.5rem;
-                border-radius: 20px;
-            }
-            h1 {
-                font-size: 1.5rem;
-            }
-            p {
-                font-size: 0.95rem;
-            }
+            .card { padding: 2rem 1.5rem; }
+            h1 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -111,21 +143,40 @@
     </div>
 
     <h1>Maintenance Notice</h1>
+    <h2>The server is currently offline</h2>
     
     <p>
-        The server is currently offline for maintenance. 
-        The Registrar system may be temporarily disconnected from the internet.
+        The Registrar system may be undergoing maintenance or is temporarily unreachable. 
+        Please try again later.
     </p>
 
     <div class="campus-badge">
-        Accessible via Campus Network 🌐
+        <strong>Campus Access Only:</strong><br>
+        DVTS.REG may be available when connected to the Campus Network 🌐
     </div>
 
     <div class="contact-box">
         <p style="margin-bottom: 0; font-size: 0.9rem;">Need urgent assistance?</p>
         <span class="contact-name">Contact Sir Dodz</span>
     </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">Switch to Dark Mode</button>
 </div>
+
+<script>
+    function toggleTheme() {
+        const html = document.documentElement;
+        const btn = document.getElementById('themeBtn');
+        
+        if (html.getAttribute('data-theme') === 'dark') {
+            html.removeAttribute('data-theme');
+            btn.innerText = 'Switch to Dark Mode';
+        } else {
+            html.setAttribute('data-theme', 'dark');
+            btn.innerText = 'Switch to Light Mode';
+        }
+    }
+</script>
 
 </body>
 </html>

@@ -3,29 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maintenance Notice | Offline</title>
+    <title>System Status | Offline</title>
     <style>
         :root {
-            /* Light Mode Colors */
-            --primary-color: #2563eb;
+            --primary-color: #ef4444; /* Red for offline status */
             --bg-body: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             --card-bg: rgba(255, 255, 255, 0.95);
             --text-main: #1e293b;
-            --text-muted: #64748b;
-            --badge-bg: #f1f5f9;
+            --text-muted: #475569;
+            --badge-bg: #fee2e2;
             --border-color: #f1f5f9;
             --btn-bg: #1e293b;
             --btn-text: #ffffff;
         }
 
         [data-theme="dark"] {
-            /* Dark Mode Colors */
-            --primary-color: #60a5fa;
+            --primary-color: #f87171;
             --bg-body: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             --card-bg: rgba(30, 41, 59, 0.95);
             --text-main: #f1f5f9;
             --text-muted: #94a3b8;
-            --badge-bg: #334155;
+            --badge-bg: #452727;
             --border-color: #334155;
             --btn-bg: #f1f5f9;
             --btn-text: #0f172a;
@@ -41,7 +39,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             color: var(--text-main);
             padding: 20px;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .card {
@@ -49,17 +47,16 @@
             backdrop-filter: blur(10px);
             padding: 3rem 2rem;
             width: 100%;
-            max-width: 480px;
+            max-width: 500px;
             border-radius: 24px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease, background 0.3s ease;
         }
 
         .status-icon {
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             background: var(--badge-bg);
             color: var(--primary-color);
             border-radius: 50%;
@@ -67,35 +64,43 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
+            animation: pulse 2s infinite;
         }
 
-        h1 {
-            margin: 0 0 0.5rem;
-            font-size: 1.75rem;
-            font-weight: 700;
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
         }
 
-        h2 {
-            font-size: 1.1rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        p {
-            line-height: 1.6;
-            margin: 0 0 1.5rem;
-            font-size: 1rem;
-            color: var(--text-muted);
-        }
-
-        .campus-badge {
-            display: inline-block;
-            background: var(--badge-bg);
-            padding: 10px 16px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            border-left: 4px solid var(--primary-color);
+        h1 { margin: 0 0 0.5rem; font-size: 1.8rem; }
+        h2 { font-size: 1.1rem; color: var(--primary-color); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .reason-list {
             text-align: left;
+            background: var(--badge-bg);
+            padding: 1.25rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .reason-list ul {
+            margin: 8px 0 0 0;
+            padding-left: 20px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .reason-list li { margin-bottom: 5px; }
+
+        p { line-height: 1.6; margin-bottom: 1.5rem; color: var(--text-muted); }
+
+        .campus-info {
+            font-size: 0.85rem;
+            padding: 10px;
+            background: rgba(0,0,0,0.03);
+            border-radius: 8px;
             margin-bottom: 2rem;
         }
 
@@ -104,14 +109,8 @@
             border-top: 1px solid var(--border-color);
         }
 
-        .contact-name {
-            display: block;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-top: 0.25rem;
-        }
+        .contact-name { font-weight: 700; color: var(--primary-color); display: block; margin-top: 5px; }
 
-        /* Toggle Button */
         .theme-toggle {
             margin-top: 2rem;
             background: var(--btn-bg);
@@ -120,18 +119,8 @@
             padding: 10px 20px;
             border-radius: 50px;
             cursor: pointer;
-            font-weight: 600;
             font-size: 0.8rem;
-            transition: opacity 0.2s;
-        }
-
-        .theme-toggle:hover {
-            opacity: 0.9;
-        }
-
-        @media (max-width: 480px) {
-            .card { padding: 2rem 1.5rem; }
-            h1 { font-size: 1.5rem; }
+            font-weight: 600;
         }
     </style>
 </head>
@@ -139,24 +128,32 @@
 
 <div class="card">
     <div class="status-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
     </div>
 
-    <h1>Maintenance Notice</h1>
-    <h2>The server is currently offline</h2>
+    <h1>System Offline</h1>
+    <h2>Connection Failure</h2>
     
-    <p>
-        The Registrar system may be undergoing maintenance or is temporarily unreachable. 
-        Please try again later.
-    </p>
-
-    <div class="campus-badge">
-        <strong>Campus Access Only:</strong><br>
-        DVTS.REG may be available when connected to the Campus Network 🌐
+    <div class="reason-list">
+        <strong>Possible causes for staff:</strong>
+        <ul>
+            <li>The Registrar server is powered down.</li>
+            <li>The system is undergoing scheduled maintenance.</li>
+            <li>Local Campus Network/Internet is disconnected.</li>
+        </ul>
     </div>
+
+    <p>Please verify the server's physical status or try again in a few minutes.</p>
+
+<div class="campus-info">
+    🌐 <strong>Note:</strong> DVTS.REG may be accessible when connected to the <strong>Campus Network</strong>. 
+    <br>
+    Connect to the school Wi-Fi and try this link: 
+    <a href="https://dvts.reg" style="color: var(--primary-color); font-weight: 700; text-decoration: underline;">https://dvts.reg</a>
+</div>
 
     <div class="contact-box">
-        <p style="margin-bottom: 0; font-size: 0.9rem;">Need urgent assistance?</p>
+        <small>Need technical assistance?</small>
         <span class="contact-name">Contact Sir Dodz</span>
     </div>
 
@@ -167,7 +164,6 @@
     function toggleTheme() {
         const html = document.documentElement;
         const btn = document.getElementById('themeBtn');
-        
         if (html.getAttribute('data-theme') === 'dark') {
             html.removeAttribute('data-theme');
             btn.innerText = 'Switch to Dark Mode';
